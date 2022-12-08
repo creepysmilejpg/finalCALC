@@ -2,10 +2,6 @@ from tkinter import *
 
 expression = ""
 
-'''
-move clear button up
-'''
-
 
 def press(num):
     global expression
@@ -22,7 +18,7 @@ def equalpress():
         expression = ""
 
     except:
-        equation.set(" error ")
+        equation.set("Error: Try Again")
         expression = ""
 
 
@@ -36,13 +32,13 @@ if __name__ == "__main__":
     gui = Tk()
     gui.configure(background="white")
 
-    gui.title("Calculator")
-    gui.geometry("360x300")
+    gui.title("Basic Calculator")
+    gui.geometry("290x300")
     gui.resizable(False, False)
 
     equation = StringVar()
-    expression_field = Entry(gui, textvariable=equation)
-    expression_field.grid(columnspan=4, ipadx=70)
+    expression_field = Entry(gui, textvariable=equation, state=DISABLED)
+    expression_field.grid(columnspan=4, ipadx=35)
 
     button1 = Button(gui, text=' 1 ', fg='black', bg='white', command=lambda: press(1), height=3, width=9)
     button1.grid(row=2, column=0)
@@ -90,9 +86,18 @@ if __name__ == "__main__":
     equal.grid(row=5, column=2)
 
     clear = Button(gui, text='Clear', fg='black', bg='white', command=clear, height=3, width=9)
-    clear.grid(row=5, column=1)
+    clear.grid(row=1, column=3)
 
-    Decimal = Button(gui, text='.', fg='black', bg='white', command=lambda: press('.'), height=3, width=9)
-    Decimal.grid(row=6, column=0)
+    deci = Button(gui, text='.', fg='black', bg='white', command=lambda: press('.'), height=3, width=9)
+    deci.grid(row=5, column=1)
+
+    openp = Button(gui, text='(', fg='black', bg='white', command=lambda: press('('), height=3, width=9)
+    openp.grid(row=1, column=0)
+
+    closedp = Button(gui, text=')', fg='black', bg='white', command=lambda: press(')'), height=3, width=9)
+    closedp.grid(row=1, column=1)
+
+    mod = Button(gui, text='%', fg='black', bg='white', command=lambda: press('%'), height=3, width=9)
+    mod.grid(row=1, column=2)
 
     gui.mainloop()
